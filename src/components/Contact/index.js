@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { Snackbar } from '@mui/material';
+import Swal from 'sweetalert2';
 
 const Container = styled.div`
 display: flex;
@@ -131,11 +132,23 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     emailjs.sendForm('service_4skexes', 'template_yyr8hu5', form.current, 'b5Qpaip6jUCMtL4Uq')
-      .then((result) => {
+    Swal.fire({
+      title: '¡Formulario enviado!',
+      text: 'Tu formulario ha sido enviado exitosamente.',
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    }).then((result) => {
+      if (result.isConfirmed) {
         setOpen(true);
         form.current.reset();
+      }
       }, (error) => {
-        console.log(error.text);
+        Swal.fire({
+             title: 'Error',
+             text: 'Ha ocurrido un error al enviar el formulario.',
+             icon: 'error',
+             confirmButtonText: 'Ok'
+        });
       });
   }
 
