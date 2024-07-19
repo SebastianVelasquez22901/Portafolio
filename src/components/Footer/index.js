@@ -100,7 +100,7 @@ function Footer() {
           <SocialMediaIcon href={Bio.insta} target="display"><InstagramIcon /></SocialMediaIcon>
         </SocialMediaIcons>
         <Copyright>
-          &copy; 2024 Sebastian Velasquez. All rights reserved.
+          &copy; 2024 Sebastian Velasquez. Todos los derechos reservados.
         </Copyright>
 
       </FooterWrapper>
