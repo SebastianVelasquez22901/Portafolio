@@ -93,7 +93,7 @@ export const skills = [
     ],
   },
   {
-    title: "Others",
+    title: "Otros",
     skills: [
       {
         name: "Git",
