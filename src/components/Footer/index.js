@@ -88,7 +88,7 @@ function Footer() {
   return (
     <FooterContainer>
       <FooterWrapper>
-        <Logo>Sebastian Vevlasquez</Logo>
+        <Logo>Sebastian Velasquez</Logo>
         <Nav>
           <NavLink href="#about">Sobre mi</NavLink>
           <NavLink href="#skills">Habilidades</NavLink>
