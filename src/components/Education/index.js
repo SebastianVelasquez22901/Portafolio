@@ -1,4 +1,3 @@
-
 import React from 'react'
 import styled from 'styled-components'
 import Timeline from '@mui/lab/Timeline';
@@ -7,7 +6,7 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import { education, experiences } from '../../data/constants';
+import { education, experiences, courses } from '../../data/constants';
 import EducationCard from '../Cards/EducationCard';
 
 const Container = styled.div`
@@ -75,7 +74,28 @@ const TimelineSection = styled.div`
     }
 `;
 
+const CourseCard = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    text-decoration: none;
+    color: inherit;
+`;
 
+const CourseImage = styled.img`
+    width: 40px;
+    height: 40px;
+`;
+
+const CourseName = styled.div`
+    font-size: 18px;
+    font-weight: 500;
+`;
 
 const index = () => {
     return (
@@ -87,19 +107,29 @@ const index = () => {
                 </Desc>
                 <TimelineSection>
                     <Timeline>
-                        {education.map((education,index) => (
-                            <TimelineItem >
+                        {education.map((education, index) => (
+                            <TimelineItem key={index}>
                                 <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                    <EducationCard education={education}/>
+                                    <EducationCard education={education} />
                                 </TimelineContent>
                                 <TimelineSeparator>
                                     <TimelineDot variant="outlined" color="secondary" />
-                                    {index !== experiences.length  && <TimelineConnector style={{ background: '#854CE6' }} />}
+                                    {index !== experiences.length && <TimelineConnector style={{ background: '#854CE6' }} />}
                                 </TimelineSeparator>
                             </TimelineItem>
                         ))}
                     </Timeline>
-
+                </TimelineSection>
+                <Title>Cursos Obtenidos</Title>
+                <TimelineSection>
+                    {courses.map((course, index) => (
+                        <a href={course.link} target="_blank" rel="noopener noreferrer" key={index}>
+                            <CourseCard>
+                                <CourseImage src={course.image} alt={course.name} />
+                                <CourseName>{course.name}</CourseName>
+                            </CourseCard>
+                        </a>
+                    ))}
                 </TimelineSection>
             </Wrapper>
         </Container>

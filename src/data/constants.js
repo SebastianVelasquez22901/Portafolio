@@ -53,6 +53,10 @@ export const skills = [
         "name": "Blazor",
         "image": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Blazor.png"
       },
+      {
+        "name": "Angular",
+        "image": "https://angular.io/assets/images/logos/angular/angular.svg"
+      }
     ],
   },
   {
@@ -63,8 +67,8 @@ export const skills = [
         image: "https://nodejs.org/static/images/logo.svg",
       },
       {
-        "name": "NestJS",
-        "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACTklEQVR4Ab1XAaQqURB9DyohSykREpRIQSAlBCoECKUFCSRCBBEAaSEABQEoCIEASCwAUICALgCo83do0//9v819XX845O7VnDkzOzP7JWGaBd3C3IJpQVjAHeJ+Rs9a97vKLGrBsB1KgMhEP3FMUUwt4ENMfxr1yQIU4SSjRkbeOZtERmHk6pXQVDlnkHh9S+QLTm1hkiz4n/gzFQuny9FoFLquE+i34x+n02k0m00UCoV3BIzn3MMJrVYLtp1OJ0cS/X4f5/MZhmG8IyDsWtDfEaDIn2232/3zbrvdxuFwwGg04qRBt+VnETBNE0IIkE2n07/erdfrWK/X6Ha73Hb9ZXII3G43ivy3dNRqtZe7lUoFs9mM6oBDwCQCgquALT1FT3a5XF7qIZ/PYzgcolqtcggIIgBZAgRKB6lCRalp2uM8k8mAVMrlchwC+DEBipycE4n5fP44j8ViKJVKSCaTbAJCpgaez4vFIsjoWa/XA50FAgEkEgmEw2F2CkxZBZ5Br5tt1ITcbjd8Ph88Hg+7CBefECCsVitS4aVJcV9D/VMCVITk/Hq9YrPZyBBo2a1YMGvAcQYcj0cCtWMugcdYNhjDiBrP25mx3++x3W6RzWZZ8isfxzQLlsslJpMJpYY5jhkqcOH1ejEYDDAej9FoNOByuZxGsfqVzC7KTqcDSkkqleKsZOqX0mAwiHK5DGrJfr+fs5SqX8sjkQji8ThCoRC+v78Za7l6JagrUh3YkUuZpqgwDaecc9VYSDoV5Fg+at7n+eLN57kuE/EvzHr/Kvs31aYAAAAASUVORK5CYII="
+        name: "NestJS",
+        image: "https://nestjs.com/logo-small-gradient.d792062c.svg"
       },
       
       {
@@ -87,7 +91,7 @@ export const skills = [
       },
       {
         "name": "Java",
-        "image": "https://proximahost.es/blog/wp-content/uploads/2022/01/java.jpg"
+        "image": "https://static-00.iconduck.com/assets.00/java-icon-1511x2048-6ikx8301.png"
       }
       
     ],
@@ -125,8 +129,20 @@ export const skills = [
         image:
           "https://cdn.worldvectorlogo.com/logos/postman.svg",
       },
+      {
+        name: "Railway",
+        image: "https://railway.com/brand/logo-light.png"
+      },
     ],
   },
+];
+
+export const courses = [
+  {
+    name: "Nest: Desarrollo backend escalable con Node",
+    image: "https://nestjs.com/logo-small-gradient.d792062c.svg",
+    link: "https://udemy-certificate.s3.amazonaws.com/image/UC-d8e7952a-4c30-4e5d-a60d-64bf6bcc83e2.jpg"
+  }
 ];
 
 export const experiences = [
@@ -139,7 +155,7 @@ export const experiences = [
     desc: "Trabaje de desarrollador Fullstack en la empresa con las diferentes tecnologias",
     skills: [
       
-      ".Net",
+      ".Net core",
       "Microsogt Server",
       "MySql",
       "Blazor",
