@@ -11,7 +11,7 @@ export const Bio = {
      Con una actitud positiva y una mentalidad de crecimiento,`,
   github: "https://github.com/SebastianVelasquez22901",
   resume:
-    "https://drive.google.com/file/d/1bH6KA6A5OmarmwF9Xo4pWPbnJeXXEx5P/view?usp=sharing",
+    "https://drive.google.com/file/d/1RFi1LlCtDIl2XlDXG_NljTT9D5GX-eIK/view?usp=sharing",
   linkedin: "https://www.linkedin.com/in/sebastian-alejandro-velasquez-bonilla-49189726b/",
   insta: "https://www.instagram.com",
 };
