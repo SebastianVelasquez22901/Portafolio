@@ -90,8 +90,8 @@ export const skills = [
         "image": "https://upload.wikimedia.org/wikipedia/commons/e/ee/.NET_Core_Logo.svg"
       },
       {
-        "name": "Java",
-        "image": "https://static-00.iconduck.com/assets.00/java-icon-1511x2048-6ikx8301.png"
+        "name": "Spring Boot",
+        "image": "https://bgasparotto.com/wp-content/uploads/2017/12/spring-boot-logo.png"
       }
       
     ],
