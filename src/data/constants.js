@@ -91,7 +91,7 @@ export const skills = [
       },
       {
         "name": "Spring Boot",
-        "image": "https://bgasparotto.com/wp-content/uploads/2017/12/spring-boot-logo.png"
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNo1sUxeC03r0DUbopvvBrhqhLQ27coPbX6w&s"
       }
       
     ],
