@@ -156,7 +156,7 @@ export const experiences = [
     skills: [
       
       ".Net core",
-      "Microsogt Server",
+      "Microsoft Server",
       "MySql",
       "Blazor",
       "Nest Js",
