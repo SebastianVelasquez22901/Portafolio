@@ -167,6 +167,25 @@ export const experiences = [
     ],
     
   },
+  {
+    id: 1,
+    img: "https://marevi.art/img/img1.jpg",
+    role: "Frontend Developer",
+    company: "Marevi",
+    date: "Enero 2025",
+    desc: "Desarrollé el frontend de una aplicación web utilizando, implementando un diseño responsivo y optimizando el rendimiento de la aplicación. La página puede observarse en https://marevi.art",
+    skills: [
+      
+      "React Js",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "Git",
+      "Namecheap"
+    ],
+    
+  },
   
 ];
 
