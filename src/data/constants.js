@@ -152,20 +152,22 @@ export const experiences = [
     role: "Desarrollador Fullstack",
     company: "Solurollos (Gegosmart)",
     date: "Mayo 2023 - Abril 2024",
-    desc: "Trabaje de desarrollador Fullstack en la empresa con las diferentes tecnologias",
+    desc: "Trabajé como desarrollador Fullstack en la empresa, realizando diferentes desarrollos en tecnologías como .Net Core, Vue.js, y Odoo Python. También participé en el análisis y manipulación de datos, creando warehouses y utilizando cubos OLAP con SQL Server Analysis Services para optimizar la gestión de información.",
     skills: [
-      
-      ".Net core",
-      "Microsoft Server",
-      "MySql",
+      ".Net Core",
+      "SQL Server",
+      "SQL Server Analysis Services (SSAS)",
+      "MySQL",
       "Blazor",
-      "Nest Js",
+      "NestJS",
       "JavaScript",
       "TypeScript",
-      "Node Js",
-      " Next Js",
+      "Node.js",
+      "Next.js",
+      "Vue.js",
+      "Odoo Python",
+      "Data Warehouses",
     ],
-    
   },
   {
     id: 1,
@@ -173,20 +175,33 @@ export const experiences = [
     role: "Frontend Developer",
     company: "Marevi",
     date: "Enero 2025",
-    desc: "Desarrollé el frontend de una aplicación web utilizando, implementando un diseño responsivo y optimizando el rendimiento de la aplicación. La página puede observarse en https://marevi.art",
+    desc: "Desarrollé el frontend de una aplicación web utilizando tecnologías modernas, implementando un diseño responsivo y optimizando el rendimiento de la aplicación. La página puede observarse en https://marevi.art.",
     skills: [
-      
-      "React Js",
+      "React.js",
       "JavaScript",
       "HTML",
       "CSS",
       "Bootstrap",
       "Git",
-      "Namecheap"
+      "Namecheap",
     ],
-    
   },
-  
+  {
+    id: 2,
+    img: "https://incomel.odoo.com/web/image/website/1/logo/INCOMEL?unique=685b70e",
+    role: "Developer Analyst",
+    company: "Incomel",
+    date: "Abril 2024 - Presente",
+    desc: "Realicé análisis y manipulación de datos, desarrollando soluciones con tecnologías como .Net Core, Vue.js, y Odoo Python. También trabajé en la creación de warehouses y el uso de cubos OLAP con SQL Server Analysis Services para mejorar la toma de decisiones empresariales.",
+    skills: [
+      ".Net Core",
+      "Vue.js",
+      "Odoo Python",
+      "SQL Server",
+      "SQL Server Analysis Services (SSAS)",
+      "Data Warehouses",
+    ],
+  },
 ];
 
 export const education = [
