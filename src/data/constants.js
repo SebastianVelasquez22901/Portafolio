@@ -152,9 +152,10 @@ export const experiences = [
     role: "Desarrollador Fullstack",
     company: "Solurollos (Gegosmart)",
     date: "Mayo 2023 - Abril 2024",
-    desc: "Trabajé como desarrollador Fullstack en la empresa, realizando diferentes desarrollos en tecnologías como .Net Core, Vue.js, y Odoo Python. También participé en el análisis y manipulación de datos, creando warehouses y utilizando cubos OLAP con SQL Server Analysis Services para optimizar la gestión de información.",
+    desc: `Desarrollé tanto frontend como backend utilizando .Net Core 6, Next.js, NestJS y Vue.js.
+    Utilicé SQL Server como base de datos principal, implementando soluciones robustas y escalables.`,
     skills: [
-      ".Net Core",
+      ".Net Core 6",
       "SQL Server",
       "SQL Server Analysis Services (SSAS)",
       "MySQL",
