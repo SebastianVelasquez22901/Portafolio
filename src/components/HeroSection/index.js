@@ -1,11 +1,12 @@
 import React from 'react'
 import HeroBgAnimation from '../HeroBgAnimation'
-import { HeroContainer, HeroBg, HeroLeftContainer, Img, HeroRightContainer, HeroInnerContainer, TextLoop, Title, Span, SubTitle,SocialMediaIcons,SocialMediaIcon, ResumeButton } from './HeroStyle'
+import { HeroContainer, HeroBg, HeroLeftContainer, Img, HeroRightContainer, HeroInnerContainer, TextLoop, Title, Span, SubTitle, SocialMediaIcons, SocialMediaIcon, ResumeButton } from './HeroStyle'
 import HeroImg from '../../images/file.jpg'
-import Typewriter from 'typewriter-effect';
-import { Bio } from '../../data/constants';
+import Typewriter from 'typewriter-effect'
 
-const HeroSection = () => {
+const HeroSection = ({ constants }) => {
+    const { Bio } = constants;
+    const lang = constants.lang || "es";
     return (
         <div id="about">
             <HeroContainer>
@@ -14,9 +15,11 @@ const HeroSection = () => {
                 </HeroBg>
                 <HeroInnerContainer >
                     <HeroLeftContainer id="Left">
-                        <Title>Hola, <br /> {Bio.name}</Title>
+                        <Title>
+                            {lang === "es" ? "Hola," : "Hello,"} <br /> {Bio.name}
+                        </Title>
                         <TextLoop>
-                            Yo soy
+                            {lang === "es" ? "Yo soy" : "I am"}
                             <Span>
                                 <Typewriter
                                     options={{
@@ -28,15 +31,14 @@ const HeroSection = () => {
                             </Span>
                         </TextLoop>
                         <SubTitle>{Bio.description}</SubTitle>
-                        <ResumeButton href={Bio.resume} target='display'>Mira mis datos</ResumeButton>
+                        <ResumeButton href={Bio.resume} target='display'>
+                            {lang === "es" ? "Mira mis datos" : "See my info"}
+                        </ResumeButton>
                     </HeroLeftContainer>
-
                     <HeroRightContainer id="Right">
-
                         <Img src={HeroImg} alt="hero-image" />
                     </HeroRightContainer>
                 </HeroInnerContainer>
-
             </HeroContainer>
         </div>
     )

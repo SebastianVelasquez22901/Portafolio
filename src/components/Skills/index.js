@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { skills } from '../../data/constants'
 
 const Container = styled.div`
 display: flex;
@@ -72,8 +71,6 @@ const Skill = styled.div`
     max-width: 330px;
     padding: 10px 36px;
   }
-
-
 `
 
 const SkillTitle = styled.h2`
@@ -118,21 +115,24 @@ const SkillImage = styled.img`
   height: 24px;
 `
 
-
-const Skills = () => {
+const Skills = ({ constants }) => {
+  const { skills, lang } = constants;
   return (
     <Container id="skills">
       <Wrapper>
-        <Title>Habilidades</Title>
-        <Desc>Aqui habilidades que he poseido a lo largo de mi carrera profesional
+        <Title>{lang === "es" ? "Habilidades" : "Skills"}</Title>
+        <Desc>
+          {lang === "es"
+            ? "Aquí habilidades que he poseído a lo largo de mi carrera profesional"
+            : "Here are skills I have acquired throughout my professional career"}
         </Desc>
         <SkillsContainer>
-          {skills.map((skill) => (
-            <Skill>
+          {skills.map((skill, i) => (
+            <Skill key={i}>
               <SkillTitle>{skill.title}</SkillTitle>
               <SkillList>
-                {skill.skills.map((item) => (
-                  <SkillItem>
+                {skill.skills.map((item, j) => (
+                  <SkillItem key={j}>
                     <SkillImage src={item.image}/>
                     {item.name}
                   </SkillItem>
@@ -140,7 +140,6 @@ const Skills = () => {
               </SkillList>
             </Skill>
           ))}
-
         </SkillsContainer>
       </Wrapper>
     </Container>

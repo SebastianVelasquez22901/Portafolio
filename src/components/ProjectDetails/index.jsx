@@ -144,7 +144,6 @@ const MemberName = styled.div`
     }
 `;
 
-
 const ButtonGroup = styled.div`
     display: flex;
     justify-content: flex-end;
@@ -179,9 +178,9 @@ const Button = styled.a`
     }
 `;
 
-
-const index = ({ openModal, setOpenModal }) => {
+const ProjectDetails = ({ openModal, setOpenModal, constants }) => {
     const project = openModal?.project;
+    const lang = constants?.lang || "es";
     return (
         <Modal open={true} onClose={() => setOpenModal({ state: false, project: null })}>
             <Container>
@@ -197,19 +196,19 @@ const index = ({ openModal, setOpenModal }) => {
                     />
                     <Image src={project?.image} />
                     <Title>{project?.title}</Title>
-                    <Date>{project.date}</Date>
+                    <Date>{project?.date}</Date>
                     <Tags>
-                        {project?.tags.map((tag) => (
-                            <Tag>{tag}</Tag>
+                        {project?.tags.map((tag, i) => (
+                            <Tag key={i}>{tag}</Tag>
                         ))}
                     </Tags>
                     <Desc>{project?.description}</Desc>
-                    {project.member && (
+                    {project?.member && (
                         <>
-                            <Label>Members</Label>
+                            <Label>{lang === "es" ? "Miembros" : "Members"}</Label>
                             <Members>
-                                {project?.member.map((member) => (
-                                    <Member>
+                                {project?.member.map((member, i) => (
+                                    <Member key={i}>
                                         <MemberImage src={member.img} />
                                         <MemberName>{member.name}</MemberName>
                                         <a href={member.github} target="new" style={{textDecoration: 'none', color: 'inherit'}}>
@@ -224,14 +223,17 @@ const index = ({ openModal, setOpenModal }) => {
                         </>
                     )}
                     <ButtonGroup>
-                        <Button dull href={project?.github} target='new'>Ver codigo</Button>
-                        <Button href={project?.webapp} target='new'>Ver aplicacion</Button>
+                        <Button dull href={project?.github} target='new'>
+                            {lang === "es" ? "Ver código" : "View code"}
+                        </Button>
+                        <Button href={project?.webapp} target='new'>
+                            {lang === "es" ? "Ver aplicación" : "View app"}
+                        </Button>
                     </ButtonGroup>
                 </Wrapper>
             </Container>
-
         </Modal>
     )
 }
 
-export default index
+export default ProjectDetails

@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { darkTheme, lightTheme } from './utils/Themes.js'
 import Navbar from "./components/Navbar";
 import './App.css';
@@ -15,6 +15,10 @@ import Education from "./components/Education";
 import ProjectDetails from "./components/ProjectDetails";
 import styled from "styled-components";
 
+// Importa ambos archivos de constantes
+import constantsES from "./data/constants.es";
+import constantsEN from "./data/constants.en";
+
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
   width: 100%;
@@ -29,24 +33,29 @@ const Wrapper = styled.div`
 function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [openModal, setOpenModal] = useState({ state: false, project: null });
-  console.log(openModal)
+  const [lang, setLang] = useState("es"); // idioma por defecto
+
+  // Selecciona las constantes según el idioma
+  const constants = lang === "es" ? constantsES : constantsEN;
+
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Router >
-        <Navbar />
+        <Navbar setLang={setLang} lang={lang} constants={constants} />
         <Body>
-          <HeroSection />
+          <HeroSection constants={constants} />
           <Wrapper>
-            <Skills />
-            <Experience />
+            <Skills constants={constants} />
+            <Experience constants={constants} />
           </Wrapper>
           <Wrapper>
-            <Education />
-            <Contact />
+            <Education constants={constants} />
+            <Projects setOpenModal={setOpenModal} constants={constants} />
+            <Contact constants={constants} />
           </Wrapper>
-          <Footer />
+          <Footer constants={constants} />
           {openModal.state &&
-            <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} />
+            <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} constants={constants} />
           }
         </Body>
       </Router>

@@ -6,7 +6,6 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import { education, experiences, courses } from '../../data/constants';
 import EducationCard from '../Cards/EducationCard';
 
 const Container = styled.div`
@@ -97,13 +96,16 @@ const CourseName = styled.div`
     font-weight: 500;
 `;
 
-const index = () => {
+const Education = ({ constants }) => {
+    const { education, experiences, courses } = constants;
     return (
         <Container id="education">
             <Wrapper>
-                <Title>Educacion</Title>
+                <Title>{constants.lang === "es" ? "Educacion" : "Education"}</Title>
                 <Desc>
-                    Mi desarrollo como persona y como profesinal divido en diferentes etapas de mi
+                    {constants.lang === "es"
+                        ? "Mi desarrollo como persona y como profesional dividido en diferentes etapas de mi vida"
+                        : "My development as a person and as a professional divided into different stages of my life"}
                 </Desc>
                 <TimelineSection>
                     <Timeline>
@@ -120,7 +122,7 @@ const index = () => {
                         ))}
                     </Timeline>
                 </TimelineSection>
-                <Title>Cursos Obtenidos</Title>
+                <Title>{constants.lang === "es" ? "Cursos Obtenidos" : "Courses Taken"}</Title>
                 <TimelineSection>
                     {courses.map((course, index) => (
                         <a href={course.link} target="_blank" rel="noopener noreferrer" key={index}>
@@ -136,4 +138,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Education;

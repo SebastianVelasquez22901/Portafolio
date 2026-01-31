@@ -55,7 +55,6 @@ const Desc = styled.div`
     }
 `;
 
-
 const ContactForm = styled.form`
   width: 95%;
   max-width: 600px;
@@ -121,20 +120,19 @@ const ContactButton = styled.input`
   font-weight: 600;
 `
 
-
-
-const Contact = () => {
-
-  //hooks
+const Contact = ({ constants }) => {
   const [open, setOpen] = React.useState(false);
   const form = useRef();
+  const lang = constants?.lang || "es";
 
   const handleSubmit = (e) => {
     e.preventDefault();
     emailjs.sendForm('service_4skexes', 'template_yyr8hu5', form.current, 'b5Qpaip6jUCMtL4Uq')
     Swal.fire({
-      title: '¡Formulario enviado!',
-      text: 'Tu formulario ha sido enviado exitosamente.',
+      title: lang === "es" ? '¡Formulario enviado!' : 'Form sent!',
+      text: lang === "es"
+        ? 'Tu formulario ha sido enviado exitosamente.'
+        : 'Your form has been sent successfully.',
       icon: 'success',
       confirmButtonText: 'Ok'
     }).then((result) => {
@@ -144,34 +142,40 @@ const Contact = () => {
       }
       }, (error) => {
         Swal.fire({
-             title: 'Error',
-             text: 'Ha ocurrido un error al enviar el formulario.',
+             title: lang === "es" ? 'Error' : 'Error',
+             text: lang === "es"
+                ? 'Ha ocurrido un error al enviar el formulario.'
+                : 'An error occurred while sending the form.',
              icon: 'error',
              confirmButtonText: 'Ok'
         });
       });
   }
 
-
-
   return (
     <Container>
       <Wrapper>
-        <Title>Contactame</Title>
-        <Desc>Quedo a la orden cualquier duda que tengas o cualquier oportunidad que podamos laborar juntos</Desc>
+        <Title>{lang === "es" ? "Contáctame" : "Contact me"}</Title>
+        <Desc>
+          {lang === "es"
+            ? "Quedo a la orden cualquier duda que tengas o cualquier oportunidad que podamos laborar juntos"
+            : "I'm available for any questions you may have or any opportunity we can work together"}
+        </Desc>
         <ContactForm ref={form} onSubmit={handleSubmit}>
-          <ContactTitle>Enviame un mensaje 🚀</ContactTitle>
-          <ContactInput placeholder="Tu correo" name="from_email" />
-          <ContactInput placeholder="Tu nombre" name="from_name" />
-          <ContactInput placeholder="Tema" name="subject" />
-          <ContactInputMessage placeholder="Mensaje" rows="4" name="message" />
-          <ContactButton type="submit" value="Enviar" />
+          <ContactTitle>
+            {lang === "es" ? "Envíame un mensaje 🚀" : "Send me a message 🚀"}
+          </ContactTitle>
+          <ContactInput placeholder={lang === "es" ? "Tu correo" : "Your email"} name="from_email" />
+          <ContactInput placeholder={lang === "es" ? "Tu nombre" : "Your name"} name="from_name" />
+          <ContactInput placeholder={lang === "es" ? "Tema" : "Subject"} name="subject" />
+          <ContactInputMessage placeholder={lang === "es" ? "Mensaje" : "Message"} rows="4" name="message" />
+          <ContactButton type="submit" value={lang === "es" ? "Enviar" : "Send"} />
         </ContactForm>
         <Snackbar
           open={open}
           autoHideDuration={6000}
           onClose={()=>setOpen(false)}
-          message="Email sent successfully!"
+          message={lang === "es" ? "¡Correo enviado exitosamente!" : "Email sent successfully!"}
           severity="success"
         />
       </Wrapper>

@@ -1,18 +1,13 @@
 import styled from 'styled-components';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import { Bio } from '../../data/constants';
 
 const FooterContainer = styled.div`
   width: 100%;
   padding: 2rem 0;
   display: flex;
   justify-content: center;
-  //background: linear-gradient(100.26deg, rgba(0, 102, 255, 0.05) 42.33%, rgba(150, 0, 225, 0.05) 127.07%);
 `;
-
 
 const FooterWrapper = styled.footer`
   width: 100%;
@@ -49,7 +44,7 @@ const Nav = styled.nav`
 `;
 
 const NavLink = styled.a`
-color: ${({ theme }) => theme.text_primary};
+  color: ${({ theme }) => theme.text_primary};
   text-decoration: none;
   font-size: 1.2rem;
   transition: color 0.2s ease-in-out;
@@ -84,25 +79,26 @@ const Copyright = styled.p`
   text-align: center;
 `;
 
-function Footer() {
+function Footer({ constants }) {
+  const { Bio } = constants;
+  const lang = constants.lang || "es";
   return (
     <FooterContainer>
       <FooterWrapper>
         <Logo>Sebastian Velasquez</Logo>
         <Nav>
-          <NavLink href="#about">Sobre mi</NavLink>
-          <NavLink href="#skills">Habilidades</NavLink>
-          <NavLink href="#experience">Experiencia</NavLink>
-          <NavLink href="#education">Educacion</NavLink>
+          <NavLink href="#about">{lang === "es" ? "Sobre mi" : "About me"}</NavLink>
+          <NavLink href="#skills">{lang === "es" ? "Habilidades" : "Skills"}</NavLink>
+          <NavLink href="#experience">{lang === "es" ? "Experiencia" : "Experience"}</NavLink>
+          <NavLink href="#education">{lang === "es" ? "Educacion" : "Education"}</NavLink>
         </Nav>
         <SocialMediaIcons>
-          <SocialMediaIcon href={Bio.linkedin} target="display"><LinkedInIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.insta} target="display"><InstagramIcon /></SocialMediaIcon>
+          <SocialMediaIcon href={Bio.linkedin} target="_blank"><LinkedInIcon /></SocialMediaIcon>
+          <SocialMediaIcon href={Bio.insta} target="_blank"><InstagramIcon /></SocialMediaIcon>
         </SocialMediaIcons>
         <Copyright>
-          &copy; 2025 Sebastian Velasquez. Todos los derechos reservados.
+          &copy; 2026 Sebastian Velasquez. {lang === "es" ? "Todos los derechos reservados." : "All rights reserved."}
         </Copyright>
-
       </FooterWrapper>
     </FooterContainer>
   );

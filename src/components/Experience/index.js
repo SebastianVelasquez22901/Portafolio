@@ -8,7 +8,6 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import ExperienceCard from '../Cards/ExperienceCard';
-import { experiences } from '../../data/constants';
 
 const Container = styled.div`
     display: flex;
@@ -74,33 +73,35 @@ const TimelineSection = styled.div`
 
 
 
-const index = () => {
+const Experience = ({ constants }) => {
+    const { experiences } = constants;
     return (
         <Container id="experience">
             <Wrapper>
-                <Title>Experiencia</Title>
+                <Title>{constants.lang === "es" ? "Experiencia" : "Experience"}</Title>
                 <Desc>
-                    Mi experiencia como desarrollador en diferentes proyectos en los que he podido laborar
+                    {constants.lang === "es"
+                        ? "Mi experiencia como desarrollador en diferentes proyectos en los que he podido laborar"
+                        : "My experience as a developer in different projects I have worked on"}
                 </Desc>
                 <TimelineSection>
                     <Timeline>
-                        {experiences.map((experience,index) => (
-                            <TimelineItem>
+                        {experiences.map((experience, index) => (
+                            <TimelineItem key={index}>
                                 <TimelineSeparator>
                                     <TimelineDot variant="outlined" color="secondary" />
                                     {index !== experiences.length - 1 && <TimelineConnector style={{ background: '#854CE6' }} />}
                                 </TimelineSeparator>
                                 <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                    <ExperienceCard experience={experience}/>
+                                    <ExperienceCard experience={experience} />
                                 </TimelineContent>
                             </TimelineItem>
                         ))}
                     </Timeline>
-
                 </TimelineSection>
             </Wrapper>
         </Container>
     )
 }
 
-export default index
+export default Experience;
