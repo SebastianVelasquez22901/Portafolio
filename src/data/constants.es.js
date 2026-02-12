@@ -208,6 +208,22 @@ export const experiences = [
       "SQL Server Analysis Services (SSAS)",
       "Data Warehouses",
     ],
+    
+  },
+  {
+    id: 3,
+    img: "https://framerusercontent.com/images/5gz6pXyT1LLMVzsZOf27lhUzY.png?scale-down-to=512&lossless=1",
+    role: "AI Prompt Engineer",
+    company: "Steamops",
+    date: "Febrero 2026 - Presente",
+    desc: " Desarrollé soluciones utilizando bots de inteligencia artificial, empleando plataformas como Brainbase y técnicas avanzadas de prompt engineering para automatizar procesos y mejorar la eficiencia operativa.",
+    skills: [
+      "Brainbase",
+      "Prompts",
+      "ChatGPT",
+      "Automatización",
+      "Python",
+    ],
   },
 ];
 

@@ -122,6 +122,21 @@ export const experiences = [
       "Data Warehouses",
     ],
   },
+  {
+    id: 3,
+    img: "https://framerusercontent.com/images/5gz6pXyT1LLMVzsZOf27lhUzY.png?scale-down-to=512&lossless=1",
+    role: "AI Prompt Engineer",
+    company: "Steamops",
+    date: "February 2026 - Present",
+    desc: "I developed solutions using artificial intelligence bots, employing platforms such as Brainbase and advanced prompt engineering techniques to automate processes and improve operational efficiency.",
+    skills: [
+      "Brainbase",
+      "Prompts",
+      "ChatGPT",
+      "Automation",
+      "Python",
+    ],
+  },
 ];
 
 export const education = [
