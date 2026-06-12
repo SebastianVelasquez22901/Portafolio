@@ -224,9 +224,11 @@ const ProjectDetails = () => {
             </>
           )}
           <ButtonGroup>
-            <Button $dull href={project?.github} target="_blank" rel="noopener noreferrer">
-              {lang === 'es' ? 'Ver código' : 'View code'}
-            </Button>
+            {project?.github && (
+              <Button $dull href={project.github} target="_blank" rel="noopener noreferrer">
+                {lang === 'es' ? 'Ver código' : 'View code'}
+              </Button>
+            )}
             <Button href={project?.webapp} target="_blank" rel="noopener noreferrer">
               {lang === 'es' ? 'Ver aplicación' : 'View app'}
             </Button>

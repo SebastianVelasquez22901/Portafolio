@@ -108,10 +108,10 @@ const education = [
     id: 0,
     img: 'https://ceur.usac.edu.gt/imagen/usac.gif',
     school: 'University of San Carlos of Guatemala',
-    date: '2020 - 2025',
-    grade: 'Pensum closure',
-    desc: 'I am studying for a degree in Computer Science and Systems Engineering',
-    degree: 'Currently completing the pensum closure',
+    date: '2020 - Present',
+    grade: 'Completed Pensum',
+    desc: 'Completed pensum student in the Computer Science and Systems Engineering degree. I have finished all required courses of the program.',
+    degree: 'Completed Pensum — Computer Science and Systems Engineering',
   },
   {
     id: 1,
@@ -136,6 +136,26 @@ const projects = [
     category: 'web app',
     github: 'https://github.com/SebastianVelasquez22901/solar-system',
     webapp: 'https://sebastianvelasquez22901.github.io/solar-system/',
+    member: [
+      {
+        name: 'Sebastian Alejandro Velasquez Bonilla',
+        img: 'https://avatars.githubusercontent.com/u/82614830?v=4',
+        linkedin: 'https://www.linkedin.com/in/sebastian-alejandro-velasquez-bonilla-49189726b/',
+        github: 'https://github.com/SebastianVelasquez22901',
+      },
+    ],
+  },
+  {
+    id: 1,
+    title: 'Aransasú Aguilar',
+    date: '2025',
+    description:
+      'I developed the official website for Aransasú Aguilar, a humanist-existential psychologist. The site presents her therapeutic services with a clean, professional design focused on well-being.',
+    image: 'aransasu.jpg',
+    tags: ['React', 'JavaScript', 'HTML', 'CSS', 'Bootstrap', 'Namecheap'],
+    category: 'web app',
+    github: '',
+    webapp: 'https://aransasu.com/',
     member: [
       {
         name: 'Sebastian Alejandro Velasquez Bonilla',
