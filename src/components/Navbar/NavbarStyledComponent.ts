@@ -1,4 +1,51 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const drawS = keyframes`
+  0%   { stroke-dashoffset: 1; opacity: 0; }
+  3%   { opacity: 1; }
+  22%  { stroke-dashoffset: 0; opacity: 1; }
+  68%  { stroke-dashoffset: 0; opacity: 1; }
+  80%  { opacity: 0; }
+  81%  { stroke-dashoffset: 1; opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+`;
+
+const drawV = keyframes`
+  0%   { stroke-dashoffset: 1; opacity: 0; }
+  18%  { stroke-dashoffset: 1; opacity: 0; }
+  20%  { opacity: 1; }
+  40%  { stroke-dashoffset: 0; opacity: 1; }
+  68%  { stroke-dashoffset: 0; opacity: 1; }
+  80%  { opacity: 0; }
+  81%  { stroke-dashoffset: 1; opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+`;
+
+const drawFl = keyframes`
+  0%   { stroke-dashoffset: 1; opacity: 0; }
+  38%  { stroke-dashoffset: 1; opacity: 0; }
+  40%  { opacity: 0.65; }
+  55%  { stroke-dashoffset: 0; opacity: 0.65; }
+  68%  { stroke-dashoffset: 0; opacity: 0.65; }
+  80%  { opacity: 0; }
+  81%  { stroke-dashoffset: 1; opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+`;
+
+export const SPath = styled.path`
+  stroke-dasharray: 1 1;
+  animation: ${drawS} 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+`;
+
+export const VPath = styled.path`
+  stroke-dasharray: 1 1;
+  animation: ${drawV} 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+`;
+
+export const FlourishPath = styled.path`
+  stroke-dasharray: 1 1;
+  animation: ${drawFl} 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+`;
 
 export const Nav = styled.div`
   background-color: ${({ theme }) => theme.card_light};
@@ -33,17 +80,10 @@ export const NavLogo = styled.a`
   justify-content: start;
   align-items: center;
   text-decoration: none;
-  color: white;
   cursor: pointer;
   @media (max-width: 640px) {
     padding: 0 0px;
   }
-`;
-
-export const Span = styled.div`
-  padding: 0 4px;
-  font-weight: bold;
-  font-size: 18px;
 `;
 
 export const NavItems = styled.ul`

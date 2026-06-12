@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import { ExpandMore } from '@mui/icons-material';
 import { usePortfolio } from '../../context/PortfolioContext';
 
 const Container = styled.div`
@@ -73,12 +75,37 @@ const Skill = styled.div`
   }
 `;
 
+const SkillHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 4px 0 8px 0;
+  user-select: none;
+  &:hover {
+    opacity: 0.85;
+  }
+`;
+
 const SkillTitle = styled.h2`
   font-size: 28px;
   font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
-  margin-bottom: 20px;
-  text-align: center;
+  margin: 0;
+`;
+
+const ChevronIcon = styled.div<{ $open: boolean }>`
+  transition: transform 0.35s ease;
+  transform: ${({ $open }) => ($open ? 'rotate(180deg)' : 'rotate(0deg)')};
+  color: ${({ theme }) => theme.text_secondary};
+  display: flex;
+  align-items: center;
+`;
+
+const CollapseWrapper = styled.div<{ $open: boolean }>`
+  max-height: ${({ $open }) => ($open ? '900px' : '0')};
+  overflow: hidden;
+  transition: max-height 0.45s ease-in-out;
 `;
 
 const SkillList = styled.div`
@@ -86,7 +113,7 @@ const SkillList = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 `;
 
 const SkillItem = styled.div`
@@ -119,6 +146,19 @@ const Skills = () => {
   const { constants } = usePortfolio();
   const { skills, lang } = constants;
 
+  const [openCategories, setOpenCategories] = useState<Set<number>>(
+    () => new Set<number>()
+  );
+
+  const toggleCategory = (i: number) => {
+    setOpenCategories(prev => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+  };
+
   return (
     <Container id="skills">
       <Wrapper>
@@ -131,15 +171,22 @@ const Skills = () => {
         <SkillsContainer>
           {skills.map((skill, i) => (
             <Skill key={i}>
-              <SkillTitle>{skill.title}</SkillTitle>
-              <SkillList>
-                {skill.skills.map((item, j) => (
-                  <SkillItem key={j}>
-                    <SkillImage src={item.image} alt={item.name} />
-                    {item.name}
-                  </SkillItem>
-                ))}
-              </SkillList>
+              <SkillHeader onClick={() => toggleCategory(i)}>
+                <SkillTitle>{skill.title}</SkillTitle>
+                <ChevronIcon $open={openCategories.has(i)}>
+                  <ExpandMore fontSize="large" />
+                </ChevronIcon>
+              </SkillHeader>
+              <CollapseWrapper $open={openCategories.has(i)}>
+                <SkillList>
+                  {skill.skills.map((item, j) => (
+                    <SkillItem key={j}>
+                      <SkillImage src={item.image} alt={item.name} />
+                      {item.name}
+                    </SkillItem>
+                  ))}
+                </SkillList>
+              </CollapseWrapper>
             </Skill>
           ))}
         </SkillsContainer>

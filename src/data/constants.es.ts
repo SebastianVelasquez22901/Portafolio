@@ -95,11 +95,11 @@ const experiences = [
   {
     id: 3,
     img: 'https://framerusercontent.com/images/5gz6pXyT1LLMVzsZOf27lhUzY.png?scale-down-to=512&lossless=1',
-    role: 'AI Prompt Engineer',
+    role: 'Senior AI Developer',
     company: 'Steamops',
     date: 'Febrero 2026 - Presente',
-    desc: 'Desarrollé soluciones utilizando bots de inteligencia artificial, empleando plataformas como Brainbase y técnicas avanzadas de prompt engineering para automatizar procesos y mejorar la eficiencia operativa.',
-    skills: ['Brainbase', 'Prompts', 'ChatGPT', 'Automatización', 'Python'],
+    desc: 'Diseño, desarrollo y despliego aplicaciones impulsadas por IA y flujos de automatización de voz, integrando LLMs con capacidades de function calling para interacciones dinámicas y conscientes del contexto. Construyo integraciones en tiempo real con sistemas externos (CRM, VoIP) y flujos de comunicación basados en Twilio. Trabajo con arquitecturas modulares y event-driven, asegurando escalabilidad, seguridad y mantenibilidad mediante buenas prácticas de CI/CD.',
+    skills: ['Python', 'LangChain', 'FastAPI', 'Twilio', 'LLMs', 'NestJS', 'Next.js', 'React', 'AWS', 'Docker', 'CI/CD', 'REST APIs', 'ChatGPT', 'Brainbase'],
   },
 ];
 
@@ -151,7 +151,7 @@ const projects = [
     date: '2025',
     description:
       'Desarrollé el sitio web oficial de Aransasú Aguilar, psicóloga humanista-existencial. El sitio presenta sus servicios terapéuticos con un diseño limpio, profesional y centrado en el bienestar.',
-    image: 'aransasu.jpg',
+    image: 'aranzasu.jpg',
     tags: ['React', 'JavaScript', 'HTML', 'CSS', 'Bootstrap', 'Namecheap'],
     category: 'web app',
     github: '',

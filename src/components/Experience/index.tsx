@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -74,6 +75,19 @@ const Experience = () => {
   const { constants } = usePortfolio();
   const { experiences, lang } = constants;
 
+  const [openItems, setOpenItems] = useState<Set<number>>(
+    () => new Set<number>()
+  );
+
+  const toggleItem = (id: number) => {
+    setOpenItems(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
   return (
     <Container id="experience">
       <Wrapper>
@@ -94,7 +108,11 @@ const Experience = () => {
                   )}
                 </TimelineSeparator>
                 <TimelineContent sx={{ py: '12px', px: 2 }}>
-                  <ExperienceCard experience={experience} />
+                  <ExperienceCard
+                    experience={experience}
+                    isOpen={openItems.has(experience.id)}
+                    onToggle={() => toggleItem(experience.id)}
+                  />
                 </TimelineContent>
               </TimelineItem>
             ))}

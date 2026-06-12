@@ -95,11 +95,11 @@ const experiences = [
   {
     id: 3,
     img: 'https://framerusercontent.com/images/5gz6pXyT1LLMVzsZOf27lhUzY.png?scale-down-to=512&lossless=1',
-    role: 'AI Prompt Engineer',
+    role: 'Senior AI Developer',
     company: 'Steamops',
     date: 'February 2026 - Present',
-    desc: 'I developed solutions using artificial intelligence bots, employing platforms such as Brainbase and advanced prompt engineering techniques to automate processes and improve operational efficiency.',
-    skills: ['Brainbase', 'Prompts', 'ChatGPT', 'Automation', 'Python'],
+    desc: 'Design, build, and deploy AI-powered applications and voice automation flows, integrating LLMs with function calling capabilities for dynamic, context-aware interactions. I build real-time integrations with external systems (CRM, VoIP) and Twilio-based communication flows. I work with modular and event-driven architectures, ensuring scalability, security, and maintainability through CI/CD best practices.',
+    skills: ['Python', 'LangChain', 'FastAPI', 'Twilio', 'LLMs', 'NestJS', 'Next.js', 'React', 'AWS', 'Docker', 'CI/CD', 'REST APIs', 'ChatGPT', 'Brainbase'],
   },
 ];
 
@@ -151,7 +151,7 @@ const projects = [
     date: '2025',
     description:
       'I developed the official website for Aransasú Aguilar, a humanist-existential psychologist. The site presents her therapeutic services with a clean, professional design focused on well-being.',
-    image: 'aransasu.jpg',
+    image: 'aranzasu.jpg',
     tags: ['React', 'JavaScript', 'HTML', 'CSS', 'Bootstrap', 'Namecheap'],
     category: 'web app',
     github: '',

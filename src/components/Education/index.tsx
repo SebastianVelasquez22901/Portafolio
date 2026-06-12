@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -102,7 +103,20 @@ const CourseName = styled.div`
 
 const Education = () => {
   const { constants } = usePortfolio();
-  const { education, experiences, courses, lang } = constants;
+  const { education, courses, lang } = constants;
+
+  const [openItems, setOpenItems] = useState<Set<number>>(
+    () => new Set<number>()
+  );
+
+  const toggleItem = (id: number) => {
+    setOpenItems(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
 
   return (
     <Container id="education">
@@ -118,11 +132,15 @@ const Education = () => {
             {education.map((edu, index) => (
               <TimelineItem key={edu.id}>
                 <TimelineContent sx={{ py: '12px', px: 2 }}>
-                  <EducationCard education={edu} />
+                  <EducationCard
+                    education={edu}
+                    isOpen={openItems.has(edu.id)}
+                    onToggle={() => toggleItem(edu.id)}
+                  />
                 </TimelineContent>
                 <TimelineSeparator>
                   <TimelineDot variant="outlined" color="secondary" />
-                  {index !== experiences.length && (
+                  {index !== education.length - 1 && (
                     <TimelineConnector style={{ background: '#854CE6' }} />
                   )}
                 </TimelineSeparator>
