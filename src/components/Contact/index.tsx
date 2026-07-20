@@ -173,7 +173,7 @@ const Contact = () => {
         </Desc>
         <ContactForm ref={form} onSubmit={handleSubmit}>
           <ContactTitle>
-            {lang === 'es' ? 'Envíame un mensaje 🚀' : 'Send me a message 🚀'}
+            {lang === 'es' ? 'Envíame un mensaje' : 'Send me a message'}
           </ContactTitle>
           <ContactInput
             placeholder={lang === 'es' ? 'Tu correo' : 'Your email'}

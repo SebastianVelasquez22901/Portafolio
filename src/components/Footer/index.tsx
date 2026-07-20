@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import { usePortfolio } from '../../context/PortfolioContext';
 
 const FooterContainer = styled.div`
@@ -97,9 +96,6 @@ const Footer = () => {
         <SocialMediaIcons>
           <SocialMediaIcon href={Bio.linkedin} target="_blank">
             <LinkedInIcon />
-          </SocialMediaIcon>
-          <SocialMediaIcon href={Bio.insta} target="_blank">
-            <InstagramIcon />
           </SocialMediaIcon>
         </SocialMediaIcons>
         <Copyright>
