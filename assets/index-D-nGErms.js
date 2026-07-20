@@ -479,13 +479,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,CA=j.div`
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin-top: 30px;
-  gap: 24px;
-  justify-content: center;
+  gap: 16px;
+  align-items: center;
 `,TA=j.div`
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   background: ${({theme:e})=>e.card};
   border: 1px solid rgba(133, 76, 230, 0.25);
   box-shadow: rgba(133, 76, 230, 0.08) 0px 4px 24px;
@@ -497,11 +497,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     box-shadow: rgba(133, 76, 230, 0.18) 0px 8px 32px;
   }
   @media (max-width: 768px) {
-    max-width: 400px;
     padding: 14px 20px;
   }
   @media (max-width: 500px) {
-    max-width: 340px;
     padding: 12px 16px;
   }
 `,AA=j.div`
