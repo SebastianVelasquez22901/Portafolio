@@ -114,13 +114,13 @@ export const NavLink = styled.a`
 `;
 
 export const GitHubButton = styled.a`
-  border: 1.8px solid ${({ theme }) => theme.primary};
+  border: 1.8px solid ${({ theme }) => theme.text_primary + '55'};
   justify-content: center;
   display: flex;
   align-items: center;
   height: 70%;
   border-radius: 20px;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.text_primary};
   cursor: pointer;
   padding: 0 20px;
   font-weight: 500;
@@ -128,8 +128,9 @@ export const GitHubButton = styled.a`
   font-size: 16px;
   transition: all 0.6s ease-in-out;
   &:hover {
-    background: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.white};
+    background: #FCA311;
+    border-color: #FCA311;
+    color: #14213D;
   }
   @media screen and (max-width: 768px) {
     font-size: 14px;
@@ -196,9 +197,9 @@ export const MobileLink = styled.a`
 `;
 
 export const LangButton = styled.button<{ $active: boolean }>`
-  background: ${({ $active, theme }) => ($active ? theme.primary : 'transparent')};
-  color: ${({ $active, theme }) => ($active ? '#fff' : theme.primary)};
-  border: 1px solid ${({ theme }) => theme.primary};
+  background: ${({ $active }) => ($active ? '#FCA311' : 'transparent')};
+  color: ${({ $active, theme }) => ($active ? '#14213D' : theme.text_primary)};
+  border: 1px solid ${({ $active, theme }) => ($active ? '#FCA311' : theme.text_primary + '55')};
   border-radius: 8px;
   margin: 0 2px;
   padding: 6px 14px;
@@ -207,8 +208,9 @@ export const LangButton = styled.button<{ $active: boolean }>`
   transition: background 0.2s, color 0.2s;
   opacity: ${({ $active }) => ($active ? 1 : 0.7)};
   &:hover {
-    background: ${({ theme }) => theme.primary};
-    color: #fff;
+    background: #FCA311;
+    border-color: #FCA311;
+    color: #14213D;
     opacity: 1;
   }
 `;

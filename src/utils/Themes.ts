@@ -1,27 +1,27 @@
 import type { DefaultTheme } from 'styled-components';
 
 export const darkTheme: DefaultTheme = {
-  bg: '#1C1C27',
-  bgLight: '#1C1E27',
-  primary: '#854CE6',
+  bg: '#0B0E1A',
+  bgLight: '#14213D',
+  primary: '#1D4E89',
   text_primary: '#F2F3F4',
   text_secondary: '#b1b2b3',
-  card: '#171721',
-  card_light: '#191924',
-  button: '#854CE6',
+  card: '#14213D',
+  card_light: '#1B2C4F',
+  button: '#1D4E89',
   white: '#FFFFFF',
   black: '#000000',
 };
 
 export const lightTheme: DefaultTheme = {
   bg: '#FFFFFF',
-  bgLight: '#f0f0f0',
-  primary: '#be1adb',
-  text_primary: '#111111',
+  bgLight: '#EFF3F8',
+  primary: '#1D4E89',
+  text_primary: '#14213D',
   text_secondary: '#48494a',
   card: '#FFFFFF',
-  card_light: '#f0f0f0',
-  button: '#5c5b5b',
+  card_light: '#EFF3F8',
+  button: '#1D4E89',
   white: '#FFFFFF',
   black: '#000000',
 };

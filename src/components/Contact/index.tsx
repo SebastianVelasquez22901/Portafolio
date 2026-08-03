@@ -1,9 +1,10 @@
 import { useState, useRef } from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import emailjs from '@emailjs/browser';
 import { Snackbar } from '@mui/material';
 import Swal from 'sweetalert2';
 import { usePortfolio } from '../../context/PortfolioContext';
+import Silk from '../Silk';
 
 const Container = styled.div`
   display: flex;
@@ -12,13 +13,25 @@ const Container = styled.div`
   position: relative;
   z-index: 1;
   align-items: center;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 60px 0px;
   @media (max-width: 960px) {
-    padding: 0px;
+    padding: 40px 0px;
+    border-radius: 0px;
   }
+`;
+
+const SilkBackground = styled.div`
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 `;
 
 const Wrapper = styled.div`
   position: relative;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +50,8 @@ const Title = styled.div`
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
-  color: ${({ theme }) => theme.text_primary};
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
   @media (max-width: 768px) {
     margin-top: 12px;
     font-size: 32px;
@@ -48,7 +62,8 @@ const Desc = styled.div`
   font-size: 18px;
   text-align: center;
   max-width: 600px;
-  color: ${({ theme }) => theme.text_secondary};
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   @media (max-width: 768px) {
     margin-top: 12px;
     font-size: 16px;
@@ -63,7 +78,7 @@ const ContactForm = styled.form`
   background-color: ${({ theme }) => theme.card};
   padding: 32px;
   border-radius: 16px;
-  box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
+  box-shadow: rgba(29, 78, 137, 0.15) 0px 4px 24px;
   margin-top: 28px;
   gap: 12px;
 `;
@@ -106,12 +121,12 @@ const ContactInputMessage = styled.textarea`
 const ContactButton = styled.button`
   width: 100%;
   text-align: center;
-  background: linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%);
+  background: linear-gradient(225deg, #FCA311 0%, #FFC857 100%);
   padding: 13px 16px;
   margin-top: 2px;
   border-radius: 12px;
   border: none;
-  color: ${({ theme }) => theme.white};
+  color: #14213D;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
@@ -126,6 +141,7 @@ const Contact = () => {
   const form = useRef<HTMLFormElement>(null);
   const { constants } = usePortfolio();
   const { lang } = constants;
+  const theme = useTheme();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -164,6 +180,9 @@ const Contact = () => {
 
   return (
     <Container>
+      <SilkBackground>
+        <Silk speed={3} scale={1} color={theme.primary} noiseIntensity={1.5} rotation={0} />
+      </SilkBackground>
       <Wrapper>
         <Title>{lang === 'es' ? 'Contáctame' : 'Contact me'}</Title>
         <Desc>

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { ExpandMore } from '@mui/icons-material';
 import type { Experience } from '../../types';
@@ -7,9 +8,9 @@ const Card = styled.div<{ $open: boolean }>`
   border-radius: 10px;
   box-shadow: ${({ $open }) =>
     $open
-      ? 'rgba(23, 92, 230, 0.15) 0px 4px 24px'
-      : '0 0 0 1.5px rgba(48, 110, 232, 0.55), rgba(48, 110, 232, 0.25) 0px 6px 28px'};
-  border: ${({ $open }) => ($open ? '0.1px solid #306ee8' : '1px solid transparent')};
+      ? 'rgba(29, 78, 137, 0.15) 0px 4px 24px'
+      : '0 0 0 1.5px rgba(29, 78, 137, 0.55), rgba(29, 78, 137, 0.25) 0px 6px 28px'};
+  border: ${({ $open }) => ($open ? '0.1px solid #1D4E89' : '1px solid transparent')};
   background: ${({ theme }) => theme.card};
   overflow: hidden;
   transition: box-shadow 0.35s ease, transform 0.35s ease;
@@ -39,7 +40,7 @@ const Header = styled.div<{ $open: boolean }>`
     bottom: 0;
     width: 3px;
     border-radius: 0 2px 2px 0;
-    background: linear-gradient(to bottom, #306ee8, #854ce6);
+    background: linear-gradient(to bottom, #14213D, #1D4E89);
     opacity: ${({ $open }) => ($open ? 0 : 1)};
     transition: opacity 0.35s ease;
   }
@@ -61,6 +62,22 @@ const Image = styled.img`
   flex-shrink: 0;
   @media only screen and (max-width: 768px) { height: 40px; }
 `;
+
+const ImageFallback = styled.div`
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  margin-top: 4px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #14213D 0%, #1D4E89 100%);
+  @media only screen and (max-width: 768px) { height: 40px; width: 40px; }
+`;
+
+const HeaderImage = ({ src, alt }: { src: string; alt: string }) => {
+  const [errored, setErrored] = useState(false);
+  if (errored) return <ImageFallback title={alt} />;
+  return <Image src={src} alt={alt} onError={() => setErrored(true)} />;
+};
 
 const HeaderBody = styled.div`
   display: flex;
@@ -163,7 +180,7 @@ const ExperienceCard = ({ experience, isOpen, onToggle }: ExperienceCardProps) =
     <Card $open={isOpen}>
       <Header $open={isOpen} onClick={onToggle}>
         <HeaderLeft>
-          <Image src={experience.img} alt={experience.company} />
+          <HeaderImage src={experience.img} alt={experience.company} />
           <HeaderBody>
             <Role>{experience.role}</Role>
             <Company>{experience.company}</Company>

@@ -96,6 +96,20 @@ const CourseImage = styled.img`
   height: 40px;
 `;
 
+const CourseImageFallback = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #1D4E89 0%, #FCA311 100%);
+  flex-shrink: 0;
+`;
+
+const CourseIcon = ({ src, alt }: { src: string; alt: string }) => {
+  const [errored, setErrored] = useState(false);
+  if (errored) return <CourseImageFallback title={alt} />;
+  return <CourseImage src={src} alt={alt} onError={() => setErrored(true)} />;
+};
+
 const CourseName = styled.div`
   font-size: 18px;
   font-weight: 500;
@@ -139,9 +153,9 @@ const Education = () => {
                   />
                 </TimelineContent>
                 <TimelineSeparator>
-                  <TimelineDot variant="outlined" color="secondary" />
+                  <TimelineDot variant="outlined" sx={{ borderColor: '#FCA311' }} />
                   {index !== education.length - 1 && (
-                    <TimelineConnector style={{ background: '#854CE6' }} />
+                    <TimelineConnector style={{ background: '#FCA311' }} />
                   )}
                 </TimelineSeparator>
               </TimelineItem>
@@ -152,7 +166,7 @@ const Education = () => {
         <TimelineSection>
           {courses.map((course, index) => (
             <CourseCard href={course.link} target="_blank" rel="noopener noreferrer" key={index}>
-              <CourseImage src={course.image} alt={course.name} />
+              <CourseIcon src={course.image} alt={course.name} />
               <CourseName>{course.name}</CourseName>
             </CourseCard>
           ))}

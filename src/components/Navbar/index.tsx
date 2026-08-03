@@ -25,12 +25,12 @@ const SVSignature = () => (
     height="52"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    style={{ display: 'block', filter: 'drop-shadow(0 0 5px rgba(133, 76, 230, 0.55))' }}
+    style={{ display: 'block', filter: 'drop-shadow(0 0 5px rgba(29, 78, 137, 0.55))' }}
   >
     <SPath
       pathLength={1}
       d="M 22,7 C 10,3 1,10 4,19 C 7,27 20,26 22,35 C 24,44 13,49 3,45"
-      stroke="#854CE6"
+      stroke="#1D4E89"
       strokeWidth={3.5}
       strokeLinecap="round"
       fill="none"
@@ -38,7 +38,7 @@ const SVSignature = () => (
     <VPath
       pathLength={1}
       d="M 32,7 L 45,45 L 58,7"
-      stroke="#854CE6"
+      stroke="#1D4E89"
       strokeWidth={3.5}
       strokeLinecap="round"
       fill="none"
@@ -46,7 +46,7 @@ const SVSignature = () => (
     <FlourishPath
       pathLength={1}
       d="M 3,45 C 20,58 44,58 58,45"
-      stroke="#854CE6"
+      stroke="#1D4E89"
       strokeWidth={2.2}
       strokeLinecap="round"
       fill="none"

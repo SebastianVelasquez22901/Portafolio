@@ -51,31 +51,29 @@ const Desc = styled.div`
 const SkillsContainer = styled.div`
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin-top: 30px;
-  gap: 24px;
-  justify-content: center;
+  gap: 16px;
+  align-items: center;
 `;
 
 const Skill = styled.div`
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   background: ${({ theme }) => theme.card};
-  border: 1px solid rgba(133, 76, 230, 0.25);
-  box-shadow: rgba(133, 76, 230, 0.08) 0px 4px 24px;
+  border: 1px solid rgba(29, 78, 137, 0.25);
+  box-shadow: rgba(29, 78, 137, 0.08) 0px 4px 24px;
   border-radius: 20px;
   padding: 20px 28px;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
   &:hover {
-    border-color: rgba(133, 76, 230, 0.55);
-    box-shadow: rgba(133, 76, 230, 0.18) 0px 8px 32px;
+    border-color: rgba(29, 78, 137, 0.55);
+    box-shadow: rgba(29, 78, 137, 0.18) 0px 8px 32px;
   }
   @media (max-width: 768px) {
-    max-width: 400px;
     padding: 14px 20px;
   }
   @media (max-width: 500px) {
-    max-width: 340px;
     padding: 12px 16px;
   }
 `;
@@ -115,7 +113,7 @@ const SkillCount = styled.span<{ $open: boolean }>`
 const ChevronIcon = styled.div<{ $open: boolean }>`
   transition: transform 0.35s ease;
   transform: ${({ $open }) => ($open ? 'rotate(180deg)' : 'rotate(0deg)')};
-  color: #854CE6;
+  color: #1D4E89;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -123,7 +121,7 @@ const ChevronIcon = styled.div<{ $open: boolean }>`
 
 const Divider = styled.div<{ $open: boolean }>`
   height: 1px;
-  background: rgba(133, 76, 230, 0.2);
+  background: rgba(29, 78, 137, 0.2);
   margin: 0 0 2px 0;
   opacity: ${({ $open }) => ($open ? 1 : 0)};
   transition: opacity 0.3s ease;
@@ -158,9 +156,9 @@ const SkillItem = styled.div`
   cursor: default;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   &:hover {
-    border-color: #854CE6;
-    box-shadow: 0 0 10px rgba(133, 76, 230, 0.2);
-    background: rgba(133, 76, 230, 0.06);
+    border-color: #1D4E89;
+    box-shadow: 0 0 10px rgba(29, 78, 137, 0.2);
+    background: rgba(29, 78, 137, 0.06);
   }
   @media (max-width: 500px) {
     font-size: 13px;
@@ -179,7 +177,7 @@ const ImageFallback = styled.div`
   width: 22px;
   height: 22px;
   border-radius: 4px;
-  background: linear-gradient(135deg, #854CE6 0%, #13ADC7 100%);
+  background: linear-gradient(135deg, #1D4E89 0%, #FCA311 100%);
   flex-shrink: 0;
 `;
 
@@ -193,17 +191,10 @@ const Skills = () => {
   const { constants } = usePortfolio();
   const { skills, lang } = constants;
 
-  const [openCategories, setOpenCategories] = useState<Set<number>>(
-    () => new Set<number>()
-  );
+  const [openCategory, setOpenCategory] = useState<number | null>(null);
 
   const toggleCategory = (i: number) => {
-    setOpenCategories(prev => {
-      const next = new Set(prev);
-      if (next.has(i)) next.delete(i);
-      else next.add(i);
-      return next;
-    });
+    setOpenCategory(prev => (prev === i ? null : i));
   };
 
   return (
@@ -217,7 +208,7 @@ const Skills = () => {
         </Desc>
         <SkillsContainer>
           {skills.map((skill, i) => {
-            const isOpen = openCategories.has(i);
+            const isOpen = openCategory === i;
             return (
               <Skill key={i}>
                 <SkillHeader onClick={() => toggleCategory(i)}>
