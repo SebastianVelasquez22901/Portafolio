@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import styled from 'styled-components';
-import { ExpandMore } from '@mui/icons-material';
 import { usePortfolio } from '../../context/PortfolioContext';
+import { skillIconSlugs } from '../../data/skillIconSlugs';
+import IconCloud from './IconCloud';
 
 const Container = styled.div`
   display: flex;
@@ -52,46 +52,36 @@ const SkillsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
-  gap: 16px;
   align-items: center;
-`;
-
-const Skill = styled.div`
-  width: 100%;
-  max-width: 700px;
-  background: ${({ theme }) => theme.card};
-  border: 1px solid rgba(29, 78, 137, 0.25);
-  box-shadow: rgba(29, 78, 137, 0.08) 0px 4px 24px;
-  border-radius: 20px;
-  padding: 20px 28px;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-  &:hover {
-    border-color: rgba(29, 78, 137, 0.55);
-    box-shadow: rgba(29, 78, 137, 0.18) 0px 8px 32px;
-  }
-  @media (max-width: 768px) {
-    padding: 14px 20px;
-  }
-  @media (max-width: 500px) {
-    padding: 12px 16px;
-  }
-`;
-
-const SkillHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  padding: 2px 0 6px 0;
-  user-select: none;
   gap: 12px;
+  margin-top: 20px;
 `;
 
-const SkillHeaderLeft = styled.div`
+const TopRow = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+  width: 100%;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+`;
+
+const BottomRow = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+const SphereCard = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 4px;
 `;
 
 const SkillTitle = styled.h2`
@@ -101,101 +91,27 @@ const SkillTitle = styled.h2`
   margin: 0;
 `;
 
-const SkillCount = styled.span<{ $open: boolean }>`
-  font-size: 13px;
-  color: ${({ theme }) => theme.text_secondary};
-  opacity: ${({ $open }) => ($open ? 0 : 0.8)};
-  max-height: ${({ $open }) => ($open ? '0' : '20px')};
-  overflow: hidden;
-  transition: opacity 0.25s ease, max-height 0.35s ease;
-`;
-
-const ChevronIcon = styled.div<{ $open: boolean }>`
-  transition: transform 0.35s ease;
-  transform: ${({ $open }) => ($open ? 'rotate(180deg)' : 'rotate(0deg)')};
-  color: #1D4E89;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-`;
-
-const Divider = styled.div<{ $open: boolean }>`
-  height: 1px;
-  background: rgba(29, 78, 137, 0.2);
-  margin: 0 0 2px 0;
-  opacity: ${({ $open }) => ($open ? 1 : 0)};
-  transition: opacity 0.3s ease;
-`;
-
-const CollapseWrapper = styled.div<{ $open: boolean }>`
-  max-height: ${({ $open }) => ($open ? '1000px' : '0')};
-  overflow: hidden;
-  transition: max-height 0.45s ease-in-out;
-`;
-
-const SkillList = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding-top: 14px;
-  padding-bottom: 6px;
-`;
-
-const SkillItem = styled.div`
-  font-size: 14px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.text_primary};
-  background: ${({ theme }) => theme.card_light || theme.card};
-  border: 1px solid ${({ theme }) => theme.text_primary + '22'};
-  border-radius: 10px;
-  padding: 8px 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: default;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  &:hover {
-    border-color: #1D4E89;
-    box-shadow: 0 0 10px rgba(29, 78, 137, 0.2);
-    background: rgba(29, 78, 137, 0.06);
-  }
-  @media (max-width: 500px) {
-    font-size: 13px;
-    padding: 7px 11px;
-  }
-`;
-
-const SkillImage = styled.img`
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  flex-shrink: 0;
-`;
-
-const ImageFallback = styled.div`
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
-  background: linear-gradient(135deg, #1D4E89 0%, #FCA311 100%);
-  flex-shrink: 0;
-`;
-
-const SkillItemIcon = ({ src, alt }: { src: string; alt: string }) => {
-  const [errored, setErrored] = useState(false);
-  if (errored) return <ImageFallback title={alt} />;
-  return <SkillImage src={src} alt={alt} onError={() => setErrored(true)} />;
-};
-
 const Skills = () => {
   const { constants } = usePortfolio();
   const { skills, lang } = constants;
 
-  const [openCategory, setOpenCategory] = useState<number | null>(null);
+  const sphereSize = 220;
 
-  const toggleCategory = (i: number) => {
-    setOpenCategory(prev => (prev === i ? null : i));
+  const buildCloudProps = (categorySkills: { name: string; image: string }[]) => {
+    const slugs: string[] = [];
+    const customIcons: { name: string; image: string }[] = [];
+    categorySkills.forEach((skill) => {
+      const slug = skillIconSlugs[skill.name];
+      if (slug) {
+        slugs.push(slug);
+      } else {
+        customIcons.push(skill);
+      }
+    });
+    return { slugs, customIcons };
   };
+
+  const [frontend, backend, others] = skills;
 
   return (
     <Container id="skills">
@@ -207,36 +123,37 @@ const Skills = () => {
             : 'Technologies I have mastered throughout my career'}
         </Desc>
         <SkillsContainer>
-          {skills.map((skill, i) => {
-            const isOpen = openCategory === i;
-            return (
-              <Skill key={i}>
-                <SkillHeader onClick={() => toggleCategory(i)}>
-                  <SkillHeaderLeft>
-                    <SkillTitle>{skill.title}</SkillTitle>
-                    <SkillCount $open={isOpen}>
-                      {skill.skills.length}{' '}
-                      {lang === 'es' ? 'tecnologías' : 'technologies'}
-                    </SkillCount>
-                  </SkillHeaderLeft>
-                  <ChevronIcon $open={isOpen}>
-                    <ExpandMore fontSize="medium" />
-                  </ChevronIcon>
-                </SkillHeader>
-                <Divider $open={isOpen} />
-                <CollapseWrapper $open={isOpen}>
-                  <SkillList>
-                    {skill.skills.map((item, j) => (
-                      <SkillItem key={j}>
-                        <SkillItemIcon src={item.image} alt={item.name} />
-                        {item.name}
-                      </SkillItem>
-                    ))}
-                  </SkillList>
-                </CollapseWrapper>
-              </Skill>
-            );
-          })}
+          <TopRow>
+            {[frontend, backend].map((category) => {
+              const { slugs, customIcons } = buildCloudProps(category.skills);
+              return (
+                <SphereCard key={category.title}>
+                  <SkillTitle>{category.title}</SkillTitle>
+                  <IconCloud
+                    slugs={slugs}
+                    customIcons={customIcons}
+                    sphereSize={sphereSize}
+                  />
+                </SphereCard>
+              );
+            })}
+          </TopRow>
+          <BottomRow>
+            {others &&
+              (() => {
+                const { slugs, customIcons } = buildCloudProps(others.skills);
+                return (
+                  <SphereCard>
+                    <SkillTitle>{others.title}</SkillTitle>
+                    <IconCloud
+                      slugs={slugs}
+                      customIcons={customIcons}
+                      sphereSize={sphereSize}
+                    />
+                  </SphereCard>
+                );
+              })()}
+          </BottomRow>
         </SkillsContainer>
       </Wrapper>
     </Container>
