@@ -63,7 +63,7 @@ const Desc = styled.div`
   }
 `;
 
-const Image = styled.img`
+const DetailImage = styled.img`
   width: 100%;
   object-fit: cover;
   border-radius: 12px;
@@ -185,7 +185,7 @@ const ProjectDetails = () => {
             style={{ position: 'absolute', top: '10px', right: '20px', cursor: 'pointer' }}
             onClick={() => setOpenModal({ state: false, project: null })}
           />
-          <Image src={project?.image} alt={project?.title} />
+          <DetailImage src={project?.image} alt={project?.title} />
           <Title>{project?.title}</Title>
           <Date>{project?.date}</Date>
           <Tags>

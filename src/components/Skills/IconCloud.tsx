@@ -116,6 +116,14 @@ const IconCloud = ({ slugs, customIcons = [], iconSize = 40, sphereSize = 260 }:
     return [...simpleIconTags, ...customTags];
   }, [data, bgHex, fallbackHex, darkMode, iconSize, customIcons]);
 
+  // react-icon-cloud starts its TagCanvas engine only once, the moment the
+  // sphere first scrolls into view — reading whatever children are in the
+  // DOM at that instant. If we mount <Cloud> before the async simple-icons
+  // fetch resolves, it starts empty and never picks up the icons that show
+  // up afterward. Waiting for the icons to be ready before mounting <Cloud>
+  // guarantees its first render already has the real content.
+  const ready = slugs.length === 0 || data !== null;
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const canvas = containerRef.current?.querySelector('canvas');
     const taglist = canvas && window.TagCanvas?.tc?.[canvas.id]?.taglist;
@@ -156,25 +164,27 @@ const IconCloud = ({ slugs, customIcons = [], iconSize = 40, sphereSize = 260 }:
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setHovered(null)}
     >
-      <Cloud
-        containerProps={{ style: { width: sphereSize, height: sphereSize } }}
-        canvasProps={{ style: { width: '100%', height: '100%', maxWidth: 'none' } }}
-        options={{
-          shape: 'sphere',
-          reverse: true,
-          depth: 1,
-          wheelZoom: false,
-          imageScale: 2,
-          activeCursor: 'default',
-          initial: [0.1, -0.1],
-          clickToFront: 500,
-          outlineColour: '#0000',
-          maxSpeed: 0.04,
-          minSpeed: 0.02,
-        }}
-      >
-        {icons}
-      </Cloud>
+      {ready && (
+        <Cloud
+          containerProps={{ style: { width: sphereSize, height: sphereSize } }}
+          canvasProps={{ style: { width: '100%', height: '100%', maxWidth: 'none' } }}
+          options={{
+            shape: 'sphere',
+            reverse: true,
+            depth: 1,
+            wheelZoom: false,
+            imageScale: 2,
+            activeCursor: 'default',
+            initial: [0.1, -0.1],
+            clickToFront: 500,
+            outlineColour: '#0000',
+            maxSpeed: 0.04,
+            minSpeed: 0.02,
+          }}
+        >
+          {icons}
+        </Cloud>
+      )}
       {hovered && <Tooltip $x={hovered.x} $y={hovered.y}>{hovered.title}</Tooltip>}
     </CloudContainer>
   );

@@ -53,7 +53,7 @@ const HeaderLeft = styled.div`
   gap: 12px;
 `;
 
-const Image = styled.img`
+const CardImage = styled.img`
   height: 50px;
   background-color: #000;
   border-radius: 10px;
@@ -75,7 +75,7 @@ const ImageFallback = styled.div`
 const HeaderImage = ({ src, alt }: { src: string; alt: string }) => {
   const [errored, setErrored] = useState(false);
   if (errored) return <ImageFallback title={alt} />;
-  return <Image src={src} alt={alt} onError={() => setErrored(true)} />;
+  return <CardImage src={src} alt={alt} onError={() => setErrored(true)} />;
 };
 
 const HeaderBody = styled.div`

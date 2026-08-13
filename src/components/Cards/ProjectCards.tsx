@@ -39,7 +39,7 @@ const Card = styled.div`
   }
 `;
 
-const Image = styled.img`
+const CardImage = styled.img`
   width: 100%;
   height: 180px;
   background-color: ${({ theme }) => theme.white};
@@ -132,7 +132,7 @@ const ProjectCards = ({ project }: ProjectCardsProps) => {
 
   return (
     <Card onClick={() => setOpenModal({ state: true, project })}>
-      <Image src={project.image} alt={project.title} />
+      <CardImage src={project.image} alt={project.title} />
       <Tags>
         {project.tags.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>
